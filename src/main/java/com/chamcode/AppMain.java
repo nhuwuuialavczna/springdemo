@@ -9,13 +9,23 @@ import org.springframework.boot.context.embedded.JspServlet;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.ContextLoaderListener;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.context.support.XmlWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
 import java.util.Map;
 
 @SpringBootApplication
-public class AppMain{
-    public static void main(String[] args) {
-        SpringApplication.run(AppMain.class, args);
+public class AppMain extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(AppMain.class);
     }
 
     @Bean
@@ -29,5 +39,11 @@ public class AppMain{
             servlet.setInitParameters(jspServletInitParams);
         };
     }
+
+//    @Override
+//    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+//        return builder.sources(AppMain.class);
+//    }
+
 
 }
