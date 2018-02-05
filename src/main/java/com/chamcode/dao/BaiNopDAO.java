@@ -14,6 +14,9 @@ public interface BaiNopDAO {
      */
     List<Bainop> getAll();
 
+    List<Bainop> getCauGanNhat();
+
+
     /**
      * Thêm mới 1 bài nộp
      */

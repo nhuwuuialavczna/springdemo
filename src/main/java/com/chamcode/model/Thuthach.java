@@ -4,13 +4,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "THUTHACH",schema = "dbo",catalog = "luyencode")
+@Table(name = "THUTHACH", schema = "dbo", catalog = "luyencode")
 public class Thuthach {
     private String macauhoi;
     private String cauhoi;
     private String dapanA;
     private String dapanB;
     private String dapanC;
+    private Integer lamoi;
     private String dapanD;
     private String dapAnDung;
     private String mamonhoc;
@@ -68,6 +69,16 @@ public class Thuthach {
 
     public void setDapanC(String dapanC) {
         this.dapanC = dapanC;
+    }
+
+    @Basic
+    @Column(name = "lamoi")
+    public Integer getLamoi() {
+        return lamoi;
+    }
+
+    public void setLamoi(Integer lamoi) {
+        this.lamoi = lamoi;
     }
 
     @Basic
@@ -148,6 +159,10 @@ public class Thuthach {
                 Objects.equals(username, thuthach.username);
     }
 
+    public String toString() {
+        return macauhoi+"="+cauhoi+"="+dapanA+"="+dapanB+"="+dapanC+"="+dapanD;
+    }
+
     @Override
     public int hashCode() {
 
@@ -155,7 +170,7 @@ public class Thuthach {
     }
 
     @ManyToOne
-    @JoinColumn(name = "mamonhoc", referencedColumnName = "mamonhoc",insertable = false,updatable = false)
+    @JoinColumn(name = "mamonhoc", referencedColumnName = "mamonhoc", insertable = false, updatable = false)
     public Monthuthach getMonthuthachByMamonhoc() {
         return monthuthachByMamonhoc;
     }
@@ -165,7 +180,7 @@ public class Thuthach {
     }
 
     @ManyToOne
-    @JoinColumn(name = "username", referencedColumnName = "username",insertable = false,updatable = false)
+    @JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
     public Taikhoan getTaikhoanByUsername() {
         return taikhoanByUsername;
     }

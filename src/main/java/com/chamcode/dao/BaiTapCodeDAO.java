@@ -39,13 +39,12 @@ public interface BaiTapCodeDAO {
     /**
      * Lấy danh sách bài tập code dựa trên loại bài của nó
      *
-     * @param loaiBai Loại bài chỉ có thể là D (cấu trúc) hoặc O (Hướng đối tượng).
-     *                Ví dụ: D10001. Trong đó: D là mã của dạng cấu trúc
-     *                1 kế tiếp là chương 1
-     *                0001 là bài tập thứ 0001 trong chương này
+     * @param loaibai là chương của bài tập. Bài tập sẽ dc chia theo chương
+     *
+     *
      * @return {@link List<Baitapcode>}
      */
-    List<Baitapcode> getBaiTapCodeTheoLoaiBai(String loaiBai);
+    List<Baitapcode> getBaiTapCodeTheoChuong(String loaibai);
 
 
     /**
@@ -65,4 +64,6 @@ public interface BaiTapCodeDAO {
     List<Baitapcode> getBaiTapCodeTheoCapDo(String capDo);
 
     void updateBaiTapCode(Baitapcode baitapcode);
+
+    List<Baitapcode> getNew();
 }

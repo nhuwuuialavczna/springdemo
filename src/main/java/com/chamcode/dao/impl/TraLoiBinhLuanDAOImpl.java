@@ -32,7 +32,7 @@ public class TraLoiBinhLuanDAOImpl implements TraLoiBinhLuanDAO {
     public void add(Traloibinhluan traloibinhluan) {
         Session session = sessionFactory.getCurrentSession();
         session.save(traloibinhluan);
-        session.beginTransaction().commit();
+//        session.beginTransaction().commit();
     }
 
     @Override

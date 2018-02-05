@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="gs-spring-boot:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="Boot-1.0-SNAPSHOT.war">
+    <root id="archive" name="ChamCode-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="gs-spring-boot:war exploded" />
     </root>
   </artifact>

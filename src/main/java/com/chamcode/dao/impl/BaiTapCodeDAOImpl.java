@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -19,23 +20,20 @@ public class BaiTapCodeDAOImpl implements BaiTapCodeDAO {
 
     @Override
     public List<Baitapcode> getAll() {
-        Session session = sessionFactory.openSession();
-
-
+        Session session = sessionFactory.getCurrentSession();
         return session.createQuery("FROm Baitapcode").list();
     }
 
     @Override
     public void add(Baitapcode baitapcode) {
-        Session session = sessionFactory.openSession();
-
+        Session session = sessionFactory.getCurrentSession();
         session.save(baitapcode);
         session.beginTransaction().commit();
     }
 
     @Override
     public void remove(String maBaiTap) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
 
         Baitapcode baiTapCodeTheoMaBaiTap = getBaiTapCodeTheoMaBaiTap(maBaiTap);
         if (baiTapCodeTheoMaBaiTap != null) {
@@ -47,32 +45,29 @@ public class BaiTapCodeDAOImpl implements BaiTapCodeDAO {
 
     @Override
     public Baitapcode getBaiTapCodeTheoMaBaiTap(String maBaiTap) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
 
         List<Baitapcode> frOm_baitapcode = session.createQuery("FROm Baitapcode where mabaicode='" + maBaiTap + "'").list();
-        return frOm_baitapcode != null ? frOm_baitapcode.get(0) : null;
+        return !frOm_baitapcode.isEmpty() ? frOm_baitapcode.get(0) : null;
     }
 
     @Override
-    public List<Baitapcode> getBaiTapCodeTheoLoaiBai(String loaiBai) {
-        Session session = sessionFactory.openSession();
-
+    public List<Baitapcode> getBaiTapCodeTheoChuong(String loaiBai) {
+        Session session = sessionFactory.getCurrentSession();
         List<Baitapcode> frOm_baitapcode = session.createQuery("FROm Baitapcode where loaibai='" + loaiBai + "'").list();
         return frOm_baitapcode;
     }
 
     @Override
     public List<Baitapcode> getBaiTapCodeTheoUsername(String username) {
-        Session session = sessionFactory.openSession();
-
+        Session session = sessionFactory.getCurrentSession();
         List<Baitapcode> frOm_baitapcode = session.createQuery("FROm Baitapcode where username='" + username + "'").list();
         return frOm_baitapcode;
     }
 
     @Override
     public List<Baitapcode> getBaiTapCodeTheoCapDo(String capDo) {
-        Session session = sessionFactory.openSession();
-
+        Session session = sessionFactory.getCurrentSession();
         List<Baitapcode> frOm_baitapcode = session.createQuery("FROm Baitapcode where mucdo='" + capDo + "'").list();
         return frOm_baitapcode;
     }
@@ -80,5 +75,12 @@ public class BaiTapCodeDAOImpl implements BaiTapCodeDAO {
     @Override
     public void updateBaiTapCode(Baitapcode baitapcode) {
 
+    }
+
+    @Override
+    public List<Baitapcode> getNew() {
+        Session session = sessionFactory.getCurrentSession();
+        List<Baitapcode> frOm_baitapcode = session.createQuery("FROm Baitapcode where lamoi=1").list();
+        return frOm_baitapcode;
     }
 }

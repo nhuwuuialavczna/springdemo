@@ -8,7 +8,11 @@ import java.util.List;
 
 /**
  * Đây là giao diện thao tác dữ liệu với bảng thử thách. Mục đích chủ yếu là đưa ra 1
- * Câu thử thách tốt cho người dùng
+ * Câu thử thách tốt cho người dùng.
+ *
+ * Mã thử thách được đặt như sau: mamon+chuong+sothuthu. Ví dụ: JVM20002. Đây là 1 thử thách thuộc JVM
+ * Chương 2 và bài 0002
+ *
  */
 public interface ThuThachDAO {
 
@@ -44,7 +48,7 @@ public interface ThuThachDAO {
     List<Thuthach> getThuThachTheoLevelVaNgoaiDanhSachDaLam(int level, Taikhoan taikhoan);
 
 
-    Thuthach getThuThachKeTiepChoNguoiDung(Taikhoan taikhoan, String maMonHoc);
+    List<Thuthach> getThuThachKeTiepChoNguoiDung(Taikhoan taikhoan, String maMonHoc);
 
     /**
      * Thêm mới 1 thử thách

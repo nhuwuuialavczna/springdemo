@@ -2,8 +2,7 @@ package com.chamcode.dao.impl;
 
 import com.chamcode.dao.BaiNopDAO;
 import com.chamcode.model.Bainop;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -25,10 +24,23 @@ public class BaiNopDAOImpl implements BaiNopDAO {
     }
 
     @Override
+    public List<Bainop> getCauGanNhat() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Bainop ORDER BY thoigian desc ");
+        return query.list();
+    }
+
+    @Override
     public void add(Bainop bainop) {
         Session session = sessionFactory.getCurrentSession();
         session.save(bainop);
-        session.beginTransaction().commit();
+//        Transaction transaction = session.getTransaction();
+//        try {
+//            transaction.commit();
+//        } catch (Exception e) {
+//            if (transaction != null) transaction.rollback();
+//        }
+
     }
 
     @Override

@@ -21,14 +21,14 @@ public class BinhLuanDAOImpl implements BinhLuanDAO {
     @Override
     public List<Binhluan> getAll() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("From Binhluan").list();
+        return session.createQuery("From Binhluan ORDER BY thoigian desc ").list();
     }
 
     @Override
     public void add(Binhluan binhluan) {
         Session session = sessionFactory.getCurrentSession();
         session.save(binhluan);
-        session.beginTransaction().commit();
+//        session.beginTransaction().commit();
     }
 
     @Override

@@ -10,6 +10,7 @@ public class Traloibinhluan {
     private String cautraloi;
     private String mabinhluan;
     private String username;
+    private String thoigian;
     private Binhluan binhluanByMabinhluan;
 
     @Id
@@ -51,7 +52,15 @@ public class Traloibinhluan {
     public void setUsername(String username) {
         this.username = username;
     }
+    @Basic
+    @Column(name = "thoigian")
+    public String getThoigian() {
+        return thoigian;
+    }
 
+    public void setThoigian(String thoigian) {
+        this.thoigian = thoigian;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

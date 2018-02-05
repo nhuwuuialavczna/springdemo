@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "BAITAPCODE",schema = "dbo",catalog = "luyencode")
+@Table(name = "BAITAPCODE", schema = "dbo", catalog = "luyencode")
 public class Baitapcode {
     private String mabaicode;
     private String tenbaicode;
@@ -14,6 +14,9 @@ public class Baitapcode {
     private String dulieuoutput;
     private String inputvidu;
     private String outputvidu;
+    private String input;
+    private String output;
+    private Integer lamoi;
     private Integer thoigiangioihan;
     private String vietlaihammain;
     private String interfacedata;
@@ -89,6 +92,28 @@ public class Baitapcode {
         this.dulieuoutput = dulieuoutput;
     }
 
+
+    @Basic
+    @Column(name = "input")
+    public String getInput() {
+        return input;
+    }
+
+    public void setInput(String input) {
+        this.input = input;
+    }
+
+    @Basic
+    @Column(name = "output")
+    public String getOutput() {
+        return output;
+    }
+
+    public void setOutput(String output) {
+        this.output = output;
+    }
+
+
     @Basic
     @Column(name = "inputvidu")
     public String getInputvidu() {
@@ -108,6 +133,18 @@ public class Baitapcode {
     public void setOutputvidu(String outputvidu) {
         this.outputvidu = outputvidu;
     }
+
+
+    @Basic
+    @Column(name = "lamoi")
+    public Integer getLamoi() {
+        return lamoi;
+    }
+
+    public void setLamoi(Integer lamoi) {
+        this.lamoi = lamoi;
+    }
+
 
     @Basic
     @Column(name = "thoigiangioihan")
@@ -273,8 +310,16 @@ public class Baitapcode {
         return Objects.hash(mabaicode, tenbaicode, noidung, loaibai, dulieutest, dulieuoutput, inputvidu, outputvidu, thoigiangioihan, vietlaihammain, interfacedata, superclass, generic, rangbuoc, tenphuongthuc, danhsachthamso, thoigian, thongtinthem, mucdo, kieutrave, username);
     }
 
+    public String toString() {
+        return mabaicode + "`" + tenbaicode + "`" + noidung + "`" + input + "`" + output + "`" + inputvidu + "`" + outputvidu + "`" + username;
+    }
+
+    public String theoChuong() {
+        return mabaicode + "`" + tenbaicode;
+    }
+
     @ManyToOne
-    @JoinColumn(name = "username", referencedColumnName = "username",insertable = false,updatable = false)
+    @JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
     public Taikhoan getTaikhoanByUsername() {
         return taikhoanByUsername;
     }

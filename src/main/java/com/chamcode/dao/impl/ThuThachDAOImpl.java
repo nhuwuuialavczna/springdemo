@@ -64,16 +64,17 @@ public class ThuThachDAOImpl implements ThuThachDAO {
     }
 
     @Override
-    public Thuthach getThuThachKeTiepChoNguoiDung(Taikhoan taikhoan, String maMonHoc) {
+    public List<Thuthach> getThuThachKeTiepChoNguoiDung(Taikhoan taikhoan, String maMonHoc) {
         Session session = sessionFactory.getCurrentSession();
+        int level = taikhoan.getLevel();
         List<Thuthach> list = new ArrayList<>();
         if (maMonHoc == null) {
-            int level = taikhoan.getLevel();
             list = getThuThachTheoLevelVaNgoaiDanhSachDaLam(level, taikhoan);
         } else {
-            list = list.stream().filter(p -> p.getMamonhoc().equals(maMonHoc)).collect(Collectors.toList());
+
+            list = getThuThachTheoLevelVaNgoaiDanhSachDaLam(level, taikhoan).stream().filter(p -> p.getMamonhoc().equals(maMonHoc)).collect(Collectors.toList());
         }
-        return !list.isEmpty() ? list.get(0) : null;
+        return list;
 
     }
 

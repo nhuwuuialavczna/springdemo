@@ -20,7 +20,7 @@
                     $("#notify").show();
                 } else {
                     //gọi ajax
-                    $("#notify-message").html('Login...');
+                    $("#notify-message").html('Checking...');
                     $("#notify-message").css('color', 'blue');
                     $("#notify").show();
                     var username = $("#login-username").val();
@@ -34,7 +34,8 @@
                                 $("#notify-message").html(data);
                                 $("#notify").show();
                             }else{
-                                wind
+                                $("#notify-message").html('Login successfully. You have passed security');
+                                window.location.href = "/Home/Introduce"
                             }
                         },
                         error:function(err){
@@ -60,7 +61,7 @@
     </script>
     <title>Login</title>
 </head>
-<body>
+<body style="font-family: monospace">
 <div class="container">
     <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-primary">
@@ -98,13 +99,9 @@
                         </div>
                     </div>
                 </form>
-
-
             </div>
         </div>
     </div>
 </div>
-
-
 </body>
 </html>

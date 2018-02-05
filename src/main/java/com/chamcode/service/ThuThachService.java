@@ -39,7 +39,7 @@ public interface ThuThachService {
     List<Thuthach> getThuThachTheoLevelVaNgoaiDanhSachDaLam(int level, Taikhoan taikhoan);
 
 
-    Thuthach getThuThachKeTiepChoNguoiDung(Taikhoan taikhoan, String maMonHoc);
+    List<Thuthach> getThuThachKeTiepChoNguoiDung(Taikhoan taikhoan, String maMonHoc);
 
     /**
      * Thêm mới 1 thử thách

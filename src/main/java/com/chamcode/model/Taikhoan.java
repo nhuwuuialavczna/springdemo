@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TAIKHOAN",schema = "dbo",catalog = "luyencode")
+@Table(name = "TAIKHOAN", schema = "dbo", catalog = "luyencode")
 public class Taikhoan {
     private String username;
     private String password;
@@ -23,7 +23,9 @@ public class Taikhoan {
     private Integer level;
     private String loaithuthach;
     private String thamgiathuthach;
+    private Integer lamoi;
     private String role;
+    private String hinhanh;
     private Collection<Baitapcode> baitapcodesByUsername;
     private Collection<Binhluan> binhluansByUsername;
     private Collection<Thuthach> thuthachesByUsername;
@@ -49,6 +51,17 @@ public class Taikhoan {
     }
 
     @Basic
+    @Column(name = "hinhanh")
+    public String getHinhanh() {
+        return hinhanh;
+    }
+
+    public void setHinhanh(String hinhanh) {
+        this.hinhanh = hinhanh;
+    }
+
+
+    @Basic
     @Column(name = "ten")
     public String getTen() {
         return ten;
@@ -57,6 +70,7 @@ public class Taikhoan {
     public void setTen(String ten) {
         this.ten = ten;
     }
+
 
     @Basic
     @Column(name = "diembaitap")
@@ -186,6 +200,16 @@ public class Taikhoan {
 
     public void setThamgiathuthach(String thamgiathuthach) {
         this.thamgiathuthach = thamgiathuthach;
+    }
+
+    @Basic
+    @Column(name = "lamoi")
+    public Integer getLamoi() {
+        return lamoi;
+    }
+
+    public void setLamoi(Integer lamoi) {
+        this.lamoi = lamoi;
     }
 
     @Basic

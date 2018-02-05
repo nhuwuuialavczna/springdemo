@@ -29,6 +29,16 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
     }
 
     @Override
+    public List<Taikhoan> getTaiKhoanGiamDanTheoDiemBaiTap() {
+        return taiKhoanDAO.getTaiKhoanGiamDanTheoDiemBaiTap();
+    }
+
+    @Override
+    public List<Taikhoan> getTaiKhoanGiamDanTheoDiemThuTHach() {
+        return taiKhoanDAO.getTaiKhoanGiamDanTheoDiemThuTHach();
+    }
+
+    @Override
     public List<Taikhoan> getTheoMaBaiCodeDaLam(String maBaiCode) {
         return taiKhoanDAO.getTheoMaBaiCodeDaLam(maBaiCode);
     }
@@ -109,8 +119,18 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
     }
 
     @Override
-    public void chinhSuaThongTinCaNhan(String username, String ten, String namSinh, String email, String fb, String gioiThieu) {
-        taiKhoanDAO.chinhSuaThongTinCaNhan(username, ten, namSinh, email, fb, gioiThieu);
+    public void capNhatThuThachDaLam(String thuThachDaLam, String username) {
+        taiKhoanDAO.capNhatThuThachDaLam(thuThachDaLam, username);
+    }
+
+    @Override
+    public void capNhatBaiCodeDaLam(String baiCodeDaLam, String username) {
+        taiKhoanDAO.capNhatBaiCodeDaLam(baiCodeDaLam, username);
+    }
+
+    @Override
+    public void chinhSuaThongTinCaNhan(String username, String namSinh, String email, String fb, String gioiThieu) {
+        taiKhoanDAO.chinhSuaThongTinCaNhan(username, namSinh, email, fb, gioiThieu);
     }
 
     @Override

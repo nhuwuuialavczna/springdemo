@@ -41,7 +41,7 @@ public class ThuThachServiceImpl implements ThuThachService {
     }
 
     @Override
-    public Thuthach getThuThachKeTiepChoNguoiDung(Taikhoan taikhoan, String maMonHoc) {
+    public List<Thuthach> getThuThachKeTiepChoNguoiDung(Taikhoan taikhoan, String maMonHoc) {
         return thuThachDAO.getThuThachKeTiepChoNguoiDung(taikhoan, maMonHoc);
     }
 

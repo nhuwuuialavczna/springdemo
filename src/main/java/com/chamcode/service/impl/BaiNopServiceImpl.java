@@ -20,6 +20,11 @@ public class BaiNopServiceImpl implements BaiNopService {
     }
 
     @Override
+    public List<Bainop> get10CauGanNhat() {
+        return baiNopDAO.getCauGanNhat();
+    }
+
+    @Override
     public void add(Bainop bainop) {
         baiNopDAO.add(bainop);
     }

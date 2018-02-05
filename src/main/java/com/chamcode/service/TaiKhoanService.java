@@ -21,6 +21,10 @@ public interface TaiKhoanService {
     List<Taikhoan> getTheoLevel(int level);
 
 
+    List<Taikhoan> getTaiKhoanGiamDanTheoDiemBaiTap();
+
+    List<Taikhoan> getTaiKhoanGiamDanTheoDiemThuTHach();
+
     /**
      * Lấy danh sách tài khoản theo 1 bài code.
      *
@@ -125,12 +129,14 @@ public interface TaiKhoanService {
      * Người dùng cần xóa bài đã làm đi để tiếp tục làm tiếp. Người dùng chỉ được xóa ở level 20
      */
     void xoaBoToanBoThuThachDaLam(String username);
+    void capNhatThuThachDaLam(String thuThachDaLam, String username);
 
+    void capNhatBaiCodeDaLam(String baiCodeDaLam, String username);
 
     /**
      * Chỉnh sửa thông tin cá nhân
      */
-    void chinhSuaThongTinCaNhan(String username, String ten, String namSinh, String email, String fb, String gioiThieu);
+    void chinhSuaThongTinCaNhan(String username, String namSinh, String email, String fb, String gioiThieu);
 
     /**
      * Thay đổi mật khẩu

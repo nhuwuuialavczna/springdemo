@@ -124,7 +124,7 @@ window.CodeMirror = (function() {
     d.otherCursor = elt("div", "\u00a0", "CodeMirror-cursor CodeMirror-secondarycursor");
     // Used to measure text size
     d.measure = elt("div", null, "CodeMirror-measure");
-    // Wraps everything that needs to exist inside the vertically-padded coordinate system
+    // Wraps everything that needs to exist inside the vertically-padded coordinate hethong
     d.lineSpace = elt("div", [d.measure, d.selectionDiv, d.lineDiv, d.cursor, d.otherCursor],
                          null, "position: relative; outline: none");
     // Moved around its parent to cover visible view
@@ -1194,7 +1194,7 @@ window.CodeMirror = (function() {
   function fromCoordSystem(cm, coords, context) {
     if (context == "div") return coords;
     var left = coords.left, top = coords.top;
-    // First move into "page" coordinate system
+    // First move into "page" coordinate hethong
     if (context == "page") {
       left -= pageScrollX();
       top -= pageScrollY();

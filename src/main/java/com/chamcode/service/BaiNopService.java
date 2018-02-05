@@ -10,7 +10,7 @@ public interface BaiNopService {
      * Nếu trong database rỗng nó sẽ trả về 1 danh sách rỗng.
      */
     List<Bainop> getAll();
-
+    List<Bainop> get10CauGanNhat();
     /**
      * Thêm mới 1 bài nộp
      */

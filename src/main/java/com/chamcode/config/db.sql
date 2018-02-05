@@ -42,6 +42,23 @@ CREATE TABLE MONTHUTHACH (
   PRIMARY KEY (mamonhoc)
 );
 
+CREATE TABLE CHEDOHAI (
+  mamonhoc VARCHAR(100),
+  thoigian VARCHAR(100),
+  username VARCHAR(100),
+  soluong  INT,
+  PRIMARY KEY (thoigian),
+  CONSTRAINT k20 FOREIGN KEY (username) REFERENCES TAIKHOAN (username)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE CHUONG (
+  chuong    INT,
+  tenchuong NVARCHAR(100),
+  PRIMARY KEY (chuong)
+);
+
 CREATE TABLE THUTHACH (
   macauhoi  VARCHAR(100),
   cauhoi    NVARCHAR(3000),

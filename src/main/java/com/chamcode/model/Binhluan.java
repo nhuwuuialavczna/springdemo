@@ -2,14 +2,17 @@ package com.chamcode.model;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 
 @Entity
-@Table(name = "BINHLUAN",schema = "dbo",catalog = "luyencode")
+@Table(name = "BINHLUAN", schema = "dbo", catalog = "luyencode")
 public class Binhluan {
     private String mabinhluan;
     private String username;
     private String binhluan;
+    private String loai;
+    private String thoigian;
     private Taikhoan taikhoanByUsername;
     private Collection<Traloibinhluan> traloibinhluansByMabinhluan;
 
@@ -21,6 +24,26 @@ public class Binhluan {
 
     public void setMabinhluan(String mabinhluan) {
         this.mabinhluan = mabinhluan;
+    }
+
+    @Basic
+    @Column(name = "Loai")
+    public String getLoai() {
+        return loai;
+    }
+
+    public void setLoai(String loai) {
+        this.loai = loai;
+    }
+
+    @Basic
+    @Column(name = "thoigian")
+    public String getThoigian() {
+        return thoigian;
+    }
+
+    public void setThoigian(String thoigian) {
+        this.thoigian = thoigian;
     }
 
     @Basic
@@ -60,7 +83,7 @@ public class Binhluan {
     }
 
     @ManyToOne
-    @JoinColumn(name = "username", referencedColumnName = "username",insertable = false,updatable = false)
+    @JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
     public Taikhoan getTaikhoanByUsername() {
         return taikhoanByUsername;
     }

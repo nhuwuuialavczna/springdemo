@@ -22,6 +22,9 @@ public interface TaiKhoanDAO {
      */
     List<Taikhoan> getTheoLevel(int level);
 
+    List<Taikhoan> getTaiKhoanGiamDanTheoDiemBaiTap();
+
+    List<Taikhoan> getTaiKhoanGiamDanTheoDiemThuTHach();
 
     /**
      * Lấy danh sách tài khoản theo 1 bài code.
@@ -73,6 +76,11 @@ public interface TaiKhoanDAO {
      * Cập nhật điểm thử thách
      */
     void capNhatDiemThuThach(int diemThuThach, String username);
+
+
+    void capNhatThuThachDaLam(String thuThachDaLam, String username);
+
+    void capNhatBaiCodeDaLam(String baiCodeDaLam, String username);
 
 
     /**
@@ -132,7 +140,7 @@ public interface TaiKhoanDAO {
     /**
      * Chỉnh sửa thông tin cá nhân
      */
-    void chinhSuaThongTinCaNhan(String username, String ten, String namSinh, String email, String fb, String gioiThieu);
+    void chinhSuaThongTinCaNhan(String username, String hinhAnh, String email, String fb, String gioiThieu);
 
     /**
      * Thay đổi mật khẩu
@@ -165,7 +173,7 @@ public interface TaiKhoanDAO {
 
     /**
      * Danh sách mã các bài code đã làm
-     * */
+     */
     List<String> danhSachMaBaiCode(String username);
 
     List<String> danhSachMaTHuThach(String username);

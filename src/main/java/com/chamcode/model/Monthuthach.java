@@ -5,10 +5,11 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "MONTHUTHACH",schema = "dbo",catalog = "luyencode")
+@Table(name = "MONTHUTHACH", schema = "dbo", catalog = "luyencode")
 public class Monthuthach {
     private String mamonhoc;
     private String tenmonhoc;
+    private Integer lamoi;
     private Collection<Thuthach> thuthachesByMamonhoc;
 
     @Id
@@ -29,6 +30,16 @@ public class Monthuthach {
 
     public void setTenmonhoc(String tenmonhoc) {
         this.tenmonhoc = tenmonhoc;
+    }
+
+    @Basic
+    @Column(name = "lamoi")
+    public Integer getLamoi() {
+        return lamoi;
+    }
+
+    public void setLamoi(Integer lamoi) {
+        this.lamoi = lamoi;
     }
 
     @Override

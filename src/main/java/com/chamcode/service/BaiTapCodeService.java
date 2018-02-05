@@ -11,6 +11,9 @@ public interface BaiTapCodeService {
      */
     List<Baitapcode> getAll();
 
+
+    List<Baitapcode> getNew();
+
     /**
      * Phương thức thêm 1 bài tập code
      *
@@ -44,7 +47,15 @@ public interface BaiTapCodeService {
      *                0001 là bài tập thứ 0001 trong chương này
      * @return {@link List<Baitapcode>}
      */
-    List<Baitapcode> getBaiTapCodeTheoLoaiBai(String loaiBai);
+    /**
+     * Lấy danh sách bài tập code dựa trên loại bài của nó
+     *
+     * @param loaibai là chương của bài tập. Bài tập sẽ dc chia theo chương
+     *
+     *
+     * @return {@link List<Baitapcode>}
+     */
+    List<Baitapcode> getBaiTapCodeTheoChuong(String loaibai);
 
 
     /**

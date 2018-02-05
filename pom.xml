@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <java.version>1.8</java.version>
-        <start-class>com.chamcode.AppMain</start-class>
+        <!--<start-class>com.chamcode.AppMain</start-class>-->
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>

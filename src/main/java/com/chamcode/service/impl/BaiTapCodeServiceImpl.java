@@ -21,6 +21,11 @@ public class BaiTapCodeServiceImpl implements BaiTapCodeService {
     }
 
     @Override
+    public List<Baitapcode> getNew() {
+        return baiTapCodeDAO.getNew();
+    }
+
+    @Override
     public void add(Baitapcode baitapcode) {
         baiTapCodeDAO.add(baitapcode);
     }
@@ -32,26 +37,26 @@ public class BaiTapCodeServiceImpl implements BaiTapCodeService {
 
     @Override
     public Baitapcode getBaiTapCodeTheoMaBaiTap(String maBaiTap) {
-        return null;
+        return baiTapCodeDAO.getBaiTapCodeTheoMaBaiTap(maBaiTap);
     }
 
     @Override
-    public List<Baitapcode> getBaiTapCodeTheoLoaiBai(String loaiBai) {
-        return null;
+    public List<Baitapcode> getBaiTapCodeTheoChuong(String loaiBai) {
+        return baiTapCodeDAO.getBaiTapCodeTheoChuong(loaiBai);
     }
 
     @Override
     public List<Baitapcode> getBaiTapCodeTheoUsername(String username) {
-        return null;
+        return baiTapCodeDAO.getBaiTapCodeTheoUsername(username);
     }
 
     @Override
     public List<Baitapcode> getBaiTapCodeTheoCapDo(String capDo) {
-        return null;
+        return baiTapCodeDAO.getBaiTapCodeTheoCapDo(capDo);
     }
 
     @Override
     public void updateBaiTapCode(Baitapcode baitapcode) {
-
+        baiTapCodeDAO.updateBaiTapCode(baitapcode);
     }
 }

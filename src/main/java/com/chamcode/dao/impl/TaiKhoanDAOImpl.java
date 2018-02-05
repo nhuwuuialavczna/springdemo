@@ -5,6 +5,7 @@ import com.chamcode.model.Baitapcode;
 import com.chamcode.model.Binhluan;
 import com.chamcode.model.Taikhoan;
 import com.chamcode.model.Thuthach;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,20 @@ public class TaiKhoanDAOImpl implements TaiKhoanDAO {
     public List<Taikhoan> getTheoLevel(int level) {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("From Taikhoan where level=" + level).list();
+    }
+
+    @Override
+    public List<Taikhoan> getTaiKhoanGiamDanTheoDiemBaiTap() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Taikhoan ORDER BY diembaitap desc ");
+        return query.list();
+    }
+
+    @Override
+    public List<Taikhoan> getTaiKhoanGiamDanTheoDiemThuTHach() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from Taikhoan ORDER BY diemthuthach desc ");
+        return query.list();
     }
 
     @Override
@@ -82,14 +97,28 @@ public class TaiKhoanDAOImpl implements TaiKhoanDAO {
     public void capNhatDiemBaiTap(int diemBaiTap, String username) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("update Taikhoan set diembaitap=" + diemBaiTap + " where username='" + username + "'").executeUpdate();
-        session.beginTransaction().commit();
+//        session.beginTransaction().commit();
     }
 
     @Override
     public void capNhatDiemThuThach(int diemThuThach, String username) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("update Taikhoan set diemthuthach=" + diemThuThach + " where username='" + username + "'").executeUpdate();
-        session.beginTransaction().commit();
+//        session.beginTransaction().commit();
+    }
+
+    @Override
+    public void capNhatThuThachDaLam(String thuThachDaLam, String username) {
+        Session session = sessionFactory.getCurrentSession();
+        session.createQuery("update Taikhoan set thuthachdalam='" + thuThachDaLam + "' where username='" + username + "'").executeUpdate();
+//        session.beginTransaction().commit();
+    }
+
+    @Override
+    public void capNhatBaiCodeDaLam(String baiCodeDaLam, String username) {
+        Session session = sessionFactory.getCurrentSession();
+        session.createQuery("update Taikhoan set baitapdalam='" + baiCodeDaLam + "' where username='" + username + "'").executeUpdate();
+//        session.beginTransaction().commit();
     }
 
     @Override
@@ -97,10 +126,13 @@ public class TaiKhoanDAOImpl implements TaiKhoanDAO {
         Session session = sessionFactory.getCurrentSession();
         int diemHienTai = taikhoan.getDiembaitap();
         int diemMoi = diemHienTai + diemBaiTap;
-        if (taikhoan.getLevel() != (diemMoi / 1000)) {
+        int level = diemMoi / 1000;
+
+        if (level + 1 > taikhoan.getLevel()) {
             capNhatLevel(taikhoan.getUsername());
         }
         capNhatDiemBaiTap(diemMoi, taikhoan.getUsername());
+
     }
 
     @Override
@@ -119,48 +151,48 @@ public class TaiKhoanDAOImpl implements TaiKhoanDAO {
         Session session = sessionFactory.getCurrentSession();
         int levelHienTai = getTaiKhoanTheoUsername(username.trim()).getLevel();
         session.createQuery("update Taikhoan set level=" + (levelHienTai + 1) + " where username='" + username + "'").executeUpdate();
-        session.beginTransaction().commit();
+//        session.beginTransaction().commit();
     }
 
     @Override
     public void capNhatThanhTichTHuTHach(String thanhTich, String username) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("update Taikhoan set thanhtichthuthach='" + thanhTich + "' where username='" + username + "'").executeUpdate();
-        session.beginTransaction().commit();
+//        session.beginTransaction().commit();
     }
 
     @Override
     public void capNhatQuyenThamGiaTHuThach(String thamGia, String username) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("update Taikhoan set thamgiathuthach='" + thamGia + "' where username='" + username + "'").executeUpdate();
-        session.beginTransaction().commit();
+//        session.beginTransaction().commit();
     }
 
     @Override
     public void capNhatLoaiThuThach(String thuThachNew, String username) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("update Taikhoan set loaithuthach='" + thuThachNew + "' where username='" + username + "'").executeUpdate();
-        session.beginTransaction().commit();
+//        session.beginTransaction().commit();
     }
 
     @Override
     public void xoaBoToanBoBaiCodeDaLam(String username) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("update Taikhoan set baitapdalam=null where username='" + username + "'").executeUpdate();
-        session.beginTransaction().commit();
+//        session.beginTransaction().commit();
     }
 
     @Override
     public void xoaBoToanBoThuThachDaLam(String username) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("update Taikhoan set thuthachdalam=null where username='" + username + "'").executeUpdate();
-        session.beginTransaction().commit();
+//        session.beginTransaction().commit();
     }
 
     @Override
-    public void chinhSuaThongTinCaNhan(String username, String ten, String namSinh, String email, String fb, String gioiThieu) {
+    public void chinhSuaThongTinCaNhan(String username, String namSinh, String email, String fb, String gioiThieu) {
         Session session = sessionFactory.getCurrentSession();
-        session.createQuery("update Taikhoan set ten='" + ten + "', namsinh='" + namSinh + "'," +
+        session.createQuery("update Taikhoan set hinhanh='" + namSinh + "'," +
                 "email='" + email + "'," +
                 "facebook='" + fb + "'," +
                 "gioithieu='" + gioiThieu + "'" +
@@ -171,12 +203,13 @@ public class TaiKhoanDAOImpl implements TaiKhoanDAO {
     public void changPass(String username, String password) {
         Session session = sessionFactory.getCurrentSession();
         session.createQuery("update Taikhoan set password='" + password + "' where username='" + username + "'").executeUpdate();
-        session.beginTransaction().commit();
+//        session.beginTransaction().commit();
     }
 
     @Override
     public void updateTaiKhoan(Taikhoan taikhoan) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.update(taikhoan);
     }
 
     @Override
