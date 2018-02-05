@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.Map;
 
 @SpringBootApplication
-public class AppMain extends SpringBootServletInitializer {
+public class AppMain{
     public static void main(String[] args) {
         SpringApplication.run(AppMain.class, args);
     }
@@ -30,8 +30,4 @@ public class AppMain extends SpringBootServletInitializer {
         };
     }
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(AppMain.class);
-    }
 }
